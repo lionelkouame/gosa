@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  ci:
+    name: Lint, Stan, Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Start containers
+        run: docker compose up -d --wait
+
+      - name: Install dependencies
+        run: docker compose exec -T app composer install --no-interaction --prefer-dist
+
+      - name: Lint (PHP CS Fixer)
+        run: docker compose exec -T app vendor/bin/php-cs-fixer fix --dry-run --diff
+
+      - name: Static analysis (PHPStan)
+        run: docker compose exec -T app vendor/bin/phpstan analyse --no-progress
+
+      - name: Tests (PHPUnit)
+        run: docker compose exec -T app vendor/bin/phpunit
+
+      - name: Stop containers
+        if: always()
+        run: docker compose down
