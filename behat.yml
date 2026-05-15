@@ -1,0 +1,20 @@
+default:
+  suites:
+    smoke:
+      paths: [ '%paths.base%/features/smoke.feature' ]
+      contexts:
+        - Gosa\Tests\Behat\Context\SmokeContext
+    application_registry:
+      paths: [ '%paths.base%/features/application_registry' ]
+      contexts:
+        - Gosa\Tests\Behat\Context\ApplicationRegistryContext
+    galaxy:
+      paths: [ '%paths.base%/features/galaxy' ]
+      contexts:
+        - Gosa\Tests\Behat\Context\GalaxyContext
+  extensions:
+    FriendsOfBehat\SymfonyExtension:
+      kernel:
+        class: Gosa\Kernel
+        environment: test
+        debug: true
