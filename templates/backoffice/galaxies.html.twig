@@ -1,0 +1,40 @@
+{% extends 'backoffice/layout.html.twig' %}
+
+{% block page_title %}Galaxies{% endblock %}
+
+{% block content %}
+<div class="bg-white rounded-xl shadow-sm">
+    <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+        <h2 class="text-base font-semibold text-gray-700">All Galaxies</h2>
+        <span class="text-sm text-gray-400">{{ galaxies|length }} registered</span>
+    </div>
+    {% if galaxies is empty %}
+        <div class="px-6 py-16 text-center text-gray-400">
+            <svg class="mx-auto w-12 h-12 mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                      d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+            </svg>
+            <p class="text-sm">No galaxies registered yet.</p>
+        </div>
+    {% else %}
+        <table class="w-full text-sm">
+            <thead class="bg-gray-50 text-xs uppercase text-gray-500">
+                <tr>
+                    <th class="px-6 py-3 text-left">Name</th>
+                    <th class="px-6 py-3 text-left">Slug</th>
+                    <th class="px-6 py-3 text-left">Applications</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+                {% for galaxy in galaxies %}
+                <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-4 font-medium text-gray-900">{{ galaxy.name }}</td>
+                    <td class="px-6 py-4 text-gray-500 font-mono">{{ galaxy.slug }}</td>
+                    <td class="px-6 py-4 text-gray-500">{{ galaxy.applicationCount }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+{% endblock %}

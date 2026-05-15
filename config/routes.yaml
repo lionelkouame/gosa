@@ -1,1 +1,22 @@
-# Routes will be declared here
+app_login:
+    path: /login
+    controller: Gosa\UI\Backoffice\Controller\LoginController::index
+    methods: [GET, POST]
+
+app_logout:
+    path: /logout
+
+app_backoffice:
+    path: /backoffice
+    controller: Gosa\UI\Backoffice\Controller\DashboardController::index
+    methods: [GET]
+
+app_backoffice_applications:
+    path: /backoffice/applications
+    controller: Gosa\UI\Backoffice\Controller\ApplicationController::index
+    methods: [GET]
+
+app_backoffice_galaxies:
+    path: /backoffice/galaxies
+    controller: Gosa\UI\Backoffice\Controller\GalaxyController::index
+    methods: [GET]

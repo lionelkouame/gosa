@@ -1,0 +1,40 @@
+{% extends 'backoffice/layout.html.twig' %}
+
+{% block page_title %}Applications{% endblock %}
+
+{% block content %}
+<div class="bg-white rounded-xl shadow-sm">
+    <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+        <h2 class="text-base font-semibold text-gray-700">All Applications</h2>
+        <span class="text-sm text-gray-400">{{ applications|length }} registered</span>
+    </div>
+    {% if applications is empty %}
+        <div class="px-6 py-16 text-center text-gray-400">
+            <svg class="mx-auto w-12 h-12 mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+            </svg>
+            <p class="text-sm">No applications registered yet.</p>
+        </div>
+    {% else %}
+        <table class="w-full text-sm">
+            <thead class="bg-gray-50 text-xs uppercase text-gray-500">
+                <tr>
+                    <th class="px-6 py-3 text-left">Name</th>
+                    <th class="px-6 py-3 text-left">Slug</th>
+                    <th class="px-6 py-3 text-left">Registered</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+                {% for app in applications %}
+                <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-4 font-medium text-gray-900">{{ app.name }}</td>
+                    <td class="px-6 py-4 text-gray-500 font-mono">{{ app.slug }}</td>
+                    <td class="px-6 py-4 text-gray-500">{{ app.registeredAt|date('Y-m-d') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+{% endblock %}

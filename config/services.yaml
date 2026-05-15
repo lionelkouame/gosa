@@ -10,3 +10,8 @@ services:
         resource: '../src/'
         exclude:
             - '../src/Kernel.php'
+
+    Gosa\UI\Backoffice\Controller\:
+        resource: '../src/UI/Backoffice/Controller/'
+        tags: ['controller.service_arguments']
+        public: true

@@ -1,0 +1,37 @@
+security:
+    password_hashers:
+        Symfony\Component\Security\Core\User\InMemoryUser: 'auto'
+
+    providers:
+        admin_provider:
+            memory:
+                users:
+                    admin:
+                        password: '%env(ADMIN_PASSWORD_HASH)%'
+                        roles: ['ROLE_ADMIN']
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        login:
+            pattern: ^/login$
+            security: false
+
+        main:
+            lazy: true
+            provider: admin_provider
+            form_login:
+                login_path: app_login
+                check_path: app_login
+                default_target_path: app_backoffice
+                username_parameter: _username
+                password_parameter: _password
+            logout:
+                path: app_logout
+                target: app_login
+
+    access_control:
+        - { path: ^/login, roles: PUBLIC_ACCESS }
+        - { path: ^/backoffice, roles: ROLE_ADMIN }
