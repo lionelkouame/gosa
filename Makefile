@@ -25,7 +25,7 @@ test-integration:
 	docker compose exec app vendor/bin/phpunit --testsuite Integration
 
 coverage:
-	docker compose exec app vendor/bin/phpunit --coverage-html var/coverage
+	XDEBUG_MODE=coverage docker compose exec -e XDEBUG_MODE=coverage app vendor/bin/phpunit --coverage-html var/coverage/html --coverage-clover var/coverage/clover.xml
 
 lint:
 	docker compose exec app vendor/bin/php-cs-fixer fix --dry-run --diff

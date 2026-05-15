@@ -2,8 +2,12 @@
 
 > A curated registry of open source applications, built with PHP 8.5, FrankenPHP, and Domain-Driven Design — no framework.
 
-[![CI](https://github.com/YOUR_USERNAME/gosa/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_USERNAME/gosa/actions/workflows/ci.yml)
-[![PHP](https://img.shields.io/badge/PHP-8.5-blue)](https://www.php.net)
+[![CI](https://github.com/lionelkouame/gosa/actions/workflows/ci.yml/badge.svg)](https://github.com/lionelkouame/gosa/actions/workflows/ci.yml)
+[![Coverage](https://codecov.io/gh/lionelkouame/gosa/branch/main/graph/badge.svg)](https://codecov.io/gh/lionelkouame/gosa)
+[![PHP](https://img.shields.io/badge/PHP-8.5-777BB4?logo=php&logoColor=white)](https://www.php.net)
+[![Symfony](https://img.shields.io/badge/Symfony-7.x-black?logo=symfony&logoColor=white)](https://symfony.com)
+[![PHPStan](https://img.shields.io/badge/PHPStan-level%20max-brightgreen)](https://phpstan.org)
+[![Behat](https://img.shields.io/badge/Behat-BDD-5a5a5a)](https://behat.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ---
@@ -25,7 +29,7 @@ GOSA is a registry that lets contributors publish, discover, and track open sour
 ## Quick start
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/gosa.git && cd gosa
+git clone https://github.com/lionelkouame/gosa.git && cd gosa
 cp .env.example .env
 make up
 make install

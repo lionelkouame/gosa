@@ -37,8 +37,15 @@ jobs:
       - name: Static analysis (PHPStan)
         run: docker compose exec -T app vendor/bin/phpstan analyse --no-progress
 
-      - name: Unit & Integration tests (PHPUnit)
-        run: docker compose exec -T app vendor/bin/phpunit --no-coverage
+      - name: Tests + Coverage (PHPUnit)
+        run: docker compose exec -T -e XDEBUG_MODE=coverage app vendor/bin/phpunit --coverage-clover var/coverage/clover.xml
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./var/coverage/clover.xml
+          fail_ci_if_error: false
+          token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Acceptance tests (Behat)
         run: docker compose exec -T app vendor/bin/behat --no-interaction
