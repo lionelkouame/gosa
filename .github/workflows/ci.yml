@@ -30,6 +30,9 @@ jobs:
       - name: Tests (PHPUnit)
         run: docker compose exec -T app vendor/bin/phpunit
 
+      - name: Acceptance tests (Behat)
+        run: docker compose exec -T app vendor/bin/behat --no-interaction
+
       - name: Stop containers
         if: always()
         run: docker compose down

@@ -1,4 +1,4 @@
-.PHONY: up down restart shell test test-unit test-integration lint fix stan coverage install
+.PHONY: up down restart shell test test-unit test-integration lint fix stan coverage install docs behat
 
 up:
 	docker compose up -d
@@ -36,4 +36,10 @@ fix:
 stan:
 	docker compose exec app vendor/bin/phpstan analyse
 
-ci: lint stan test
+behat:
+	docker compose exec app vendor/bin/behat --no-interaction
+
+ci: lint stan test behat
+
+docs:
+	docker compose --profile docs up docs
