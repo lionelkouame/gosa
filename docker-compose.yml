@@ -15,6 +15,9 @@ services:
     environment:
       SERVER_NAME: localhost
       DATABASE_URL: postgresql://gosa:gosa@db:5432/gosa
+      APP_ENV: dev
+      APP_DEBUG: '1'
+      APP_SECRET: 'gosa-dev-secret-change-in-production'
     depends_on:
       db:
         condition: service_healthy

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\ApplicationRegistry\Domain;
+namespace Gosa\Tests\Unit\ApplicationRegistry\Domain;
 
 use PHPUnit\Framework\TestCase;
 

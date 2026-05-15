@@ -1,6 +1,6 @@
 /vendor/
 /var/
 /.php-cs-fixer.cache
-/.env
+/.env.local
+/.env.*.local
 .idea/
-le projet est déjà testable
