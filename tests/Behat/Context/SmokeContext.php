@@ -16,7 +16,7 @@ final class SmokeContext implements Context
      */
     public function theApplicationIsRunning(): void
     {
-        $this->environment = $_SERVER['APP_ENV'] ?? getenv('APP_ENV') ?: 'test';
+        $this->environment = $_SERVER['APP_ENV'] ?? \getenv('APP_ENV') ?: 'test';
         Assert::assertNotEmpty($this->environment);
     }
 
