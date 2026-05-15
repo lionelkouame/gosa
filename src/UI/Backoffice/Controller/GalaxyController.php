@@ -16,7 +16,7 @@ final class GalaxyController
         return new Response(
             $this->twig->render('backoffice/galaxies.html.twig', [
                 'galaxies' => [],
-            ])
+            ]),
         );
     }
 }

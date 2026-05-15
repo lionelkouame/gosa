@@ -16,7 +16,7 @@ final class ApplicationController
         return new Response(
             $this->twig->render('backoffice/applications.html.twig', [
                 'applications' => [],
-            ])
+            ]),
         );
     }
 }

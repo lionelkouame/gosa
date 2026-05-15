@@ -15,10 +15,6 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        login:
-            pattern: ^/login$
-            security: false
-
         main:
             lazy: true
             provider: admin_provider
@@ -28,6 +24,7 @@ security:
                 default_target_path: app_backoffice
                 username_parameter: _username
                 password_parameter: _password
+                enable_csrf: true
             logout:
                 path: app_logout
                 target: app_login

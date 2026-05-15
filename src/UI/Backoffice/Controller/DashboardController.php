@@ -19,7 +19,7 @@ final class DashboardController
                     'applications' => 0,
                     'galaxies' => 0,
                 ],
-            ])
+            ]),
         );
     }
 }
